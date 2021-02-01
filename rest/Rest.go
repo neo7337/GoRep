@@ -26,7 +26,7 @@ func makeCall() {
 	value, _ := json.Marshal(data)
 	response, err := http.Post("https://httpbin.org/post", "application/json", bytes.NewBuffer(value))
 	if err != nil {
-		fmt.Println("error on making request")
+		fmt.Println("Error while making request")
 	} else {
 		resp, _ := ioutil.ReadAll(response.Body)
 		fmt.Println(string(resp))
