@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"mygosnippets/custprotobuf"
 	"mygosnippets/rest"
 	"mygosnippets/update"
 	"sync"
@@ -16,7 +17,7 @@ func main() {
 	wg = new(sync.WaitGroup)
 
 	fmt.Printf("Enter the choice of operation: \n")
-	fmt.Printf("1. Run Update Func\n2. Make Rest Call Async\n3. Make Rest Call Sync\n")
+	fmt.Printf("1. Run Update Func\n2. Make Rest Call Async\n3. Make Rest Call Sync\n4. Test Protobuf\n")
 	var input string
 	fmt.Scanln(&input)
 	if input == "1" {
@@ -31,5 +32,7 @@ func main() {
 			go rest.MakeRestCallSync(wg)
 		}
 		wg.Wait()
+	} else if input == "4" {
+		custprotobuf.ViewProtoBuf()
 	}
 }
