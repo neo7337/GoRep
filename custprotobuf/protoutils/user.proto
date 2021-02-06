@@ -1,6 +1,6 @@
 syntax="proto3";
 
-package custprotobuf;
+package protoutils;
 
 message User {
     string name = 1;

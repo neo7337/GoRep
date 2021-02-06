@@ -1,4 +1,4 @@
-package custprotobuf
+package protoutils
 
 import (
 	"fmt"

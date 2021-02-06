@@ -1,35 +1,35 @@
-package rest
+package main
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
-	"net/http"
 	"sync"
+
+	rest "github.com/neo7337/goRep/rest/restutils"
 )
 
-// MakeRestCallSync : Makes Sync Rest Call
-func MakeRestCallSync(wg *sync.WaitGroup) {
-	defer wg.Done()
-	makeCall()
-}
+var (
+	wg *sync.WaitGroup
+)
 
-// MakeRestCallAsync : Makes Async Rest Call
-func MakeRestCallAsync() {
-	makeCall()
-}
+func main() {
 
-func makeCall() {
-	fmt.Println("Making Rest Call")
-	data := map[string]string{"firstName": "Test", "lastName": "User"}
-	value, _ := json.Marshal(data)
-	response, err := http.Post("https://httpbin.org/post", "application/json", bytes.NewBuffer(value))
-	if err != nil {
-		fmt.Println("error on making request")
-	} else {
-		resp, _ := ioutil.ReadAll(response.Body)
-		fmt.Println(string(resp))
+	wg = new(sync.WaitGroup)
+
+	fmt.Printf("Enter the choice of operation: \n")
+	fmt.Printf("1. Make Rest Call Async\n2. Make Rest Call Sync\n")
+	var input string
+	fmt.Scanln(&input)
+
+	if input == "1" {
+		for i := 0; i < 10; i++ {
+			go rest.MakeRestCallAsync()
+		}
+	} else if input == "2" {
+		for i := 0; i < 10; i++ {
+			wg.Add(1)
+			go rest.MakeRestCallSync(wg)
+		}
+		wg.Wait()
 	}
-	fmt.Println("Completing Application")
+
 }

@@ -1,3 +1,11 @@
 # GoRep
 
-This repository contains commonly used Go Snippets
+This repository contains Go Snippets
+
+1. ArraysUtils
+2. REST
+3. ProtoBuf
+4. gRPC
+
+ProtoBuf Commands\
+`protoc --go_out=. *.proto`
