@@ -1,4 +1,4 @@
-package rest
+package restutils
 
 import (
 	"bytes"
