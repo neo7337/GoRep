@@ -1,3 +1,3 @@
 module github.com/neo7337/goRep/arrays
 
-go 1.14
+go 1.20
