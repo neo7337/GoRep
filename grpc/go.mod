@@ -3,7 +3,7 @@ module github.com/neo7337/goRep/my-grpc
 go 1.20
 
 require (
-	google.golang.org/grpc v1.56.2
+	google.golang.org/grpc v1.56.3
 	google.golang.org/protobuf v1.31.0
 )
 
